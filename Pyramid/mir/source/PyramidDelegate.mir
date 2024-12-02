@@ -1,0 +1,760 @@
+[ @file = "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc"; @line = 1; ]
+import Toybox.Lang;
+[ @file = "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc"; @line = 2; ]
+import Toybox.WatchUi;
+[ @file = "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc"; @line = 3; ]
+import Toybox.System;
+[ @file = "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc"; @line = 5; ]
+class PyramidDelegate extends WatchUi.BehaviorDelegate{
+    [ @file = "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc"; @line = 7; ]
+    function initialize() as Void {
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_7_26_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 8 8 ]
+        %tmp.2 = getv ? :BehaviorDelegate;
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_7_26_stop:
+    }
+    [ @file = "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc"; @line = 11; ]
+    function onMenu() as Boolean {
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_11_33_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 12 8 ]
+        %tmp.1 = getm $.Toybox.WatchUi;
+        %tmp.2 = getv function %tmp.1 :pushView;
+        %tmp.6 = getv ? :PyramidSettings;
+        %tmp.3 = newc %tmp.6 ();
+        %tmp.10 = getv ? :PyramidMenuDelegate;
+        %tmp.7 = newc %tmp.10 ();
+        %tmp.11 = getm $.Toybox.WatchUi;
+        %tmp.12 = getv %tmp.11 :SLIDE_UP;
+        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.7, %tmp.12);
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 13 8 ]
+        %tmp.13 = true;
+        ret %tmp.13;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_11_33_stop:
+    }
+    [ @file = "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc"; @line = 16; ]
+    function onTap(clickEvent) as Boolean {
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_16_42_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 17 8 ]
+        [ "C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_16_42_start" "C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_16_42_stop" ]
+        %xy.1 = local;
+        %tmp.1 = lgetv %clickEvent;
+        %tmp.2 = getv function %tmp.1 :getCoordinates;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %xy.1 %tmp.3;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 20 8 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_20_8_if_stmt:
+        %tmp.5 = getv ? :state;
+        %tmp.6 = 1;
+        %tmp.7 = eq %tmp.5 %tmp.6;
+        bf %tmp.7 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_20_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_20_8_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_20_24_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 21 12 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_21_12_if_stmt:
+        %tmp.8 = self;
+        %tmp.9 = getv function %tmp.8 :inbox;
+        %tmp.11 = getv ? :deckXY;
+        %tmp.13 = getv ? :cardWH;
+        %tmp.15 = lgetv %xy.1;
+        %tmp.16 = invoke %tmp.8 %tmp.9(%tmp.11, %tmp.13, %tmp.15);
+        bf %tmp.16 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_21_12_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_21_12_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_21_41_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 22 16 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_22_16_if_stmt:
+        %tmp.18 = getv ? :deck;
+        %tmp.19 = getv function %tmp.18 :size;
+        %tmp.20 = invoke %tmp.18 %tmp.19();
+        %tmp.21 = 0;
+        %tmp.22 = eq %tmp.20 %tmp.21;
+        bf %tmp.22 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_22_16_if_false;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_22_16_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_22_38_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 23 20 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_23_20_if_stmt:
+        %tmp.24 = getv ? :tried;
+        %tmp.26 = getv ? :tries;
+        %tmp.27 = lt %tmp.24 %tmp.26;
+        bf %tmp.27 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_23_20_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_23_20_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_23_39_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 24 24 ]
+        %tmp.29 = getv ? :play;
+        %tmp.30 = getv function %tmp.29 :slice;
+        %tmp.31 = 0;
+        %tmp.32 = null;
+        %tmp.33 = invoke %tmp.29 %tmp.30(%tmp.31, %tmp.32);
+        putv self :deck %tmp.33;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 25 24 ]
+        %tmp.34 = newa 0;
+        putv self :play %tmp.34;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 26 24 ]
+        %tmp.37 = getv ? :tried;
+        %tmp.38 = add %tmp.37 1;
+        putv self :tried dup %tmp.38;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 27 24 ]
+        %tmp.39 = self;
+        %tmp.40 = getv function %tmp.39 :savegame;
+        invoke %tmp.39 %tmp.40();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 28 24 ]
+        %tmp.41 = getm $.Toybox.WatchUi;
+        %tmp.42 = getv function %tmp.41 :requestUpdate;
+        invoke %tmp.41 %tmp.42();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 29 24 ]
+        %tmp.43 = true;
+        ret %tmp.43;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_23_39_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_23_20_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_23_20_if_end:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 31 20 ]
+        %tmp.44 = false;
+        ret %tmp.44;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_22_38_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_22_16_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_22_16_if_false:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_32_23_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 33 20 ]
+        %tmp.45 = self;
+        %tmp.46 = getv function %tmp.45 :draw;
+        invoke %tmp.45 %tmp.46();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 34 20 ]
+        %tmp.47 = self;
+        %tmp.48 = getv function %tmp.47 :savegame;
+        invoke %tmp.47 %tmp.48();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 35 20 ]
+        %tmp.49 = getm $.Toybox.WatchUi;
+        %tmp.50 = getv function %tmp.49 :requestUpdate;
+        invoke %tmp.49 %tmp.50();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 36 20 ]
+        %tmp.51 = true;
+        ret %tmp.51;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_32_23_stop:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_22_16_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_21_41_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_21_12_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_21_12_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_20_24_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_20_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_20_8_if_end:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 42 8 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_42_8_if_stmt:
+        %tmp.53 = getv ? :state;
+        %tmp.54 = 1;
+        %tmp.55 = eq %tmp.53 %tmp.54;
+        bf %tmp.55 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_42_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_42_8_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_42_24_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 43 12 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_43_12_if_stmt:
+        %tmp.56 = self;
+        %tmp.57 = getv function %tmp.56 :inbox;
+        %tmp.59 = getv ? :playXY;
+        %tmp.61 = getv ? :cardWH;
+        %tmp.63 = lgetv %xy.1;
+        %tmp.64 = invoke %tmp.56 %tmp.57(%tmp.59, %tmp.61, %tmp.63);
+        bf %tmp.64 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_43_12_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_43_12_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_43_41_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 44 16 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_44_16_if_stmt:
+        %tmp.66 = getv ? :play;
+        %tmp.67 = getv function %tmp.66 :size;
+        %tmp.68 = invoke %tmp.66 %tmp.67();
+        %tmp.69 = 0;
+        %tmp.70 = eq %tmp.68 %tmp.69;
+        bf %tmp.70 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_44_16_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_44_16_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_44_38_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 44 40 ]
+        %tmp.71 = false;
+        ret %tmp.71;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_44_38_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_44_16_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_44_16_if_end:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 45 16 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_45_16_if_stmt:
+        %tmp.72 = self;
+        %tmp.73 = getv function %tmp.72 :val;
+        %tmp.75 = getv ? :play;
+        %tmp.77 = getv ? :play;
+        %tmp.78 = getv function %tmp.77 :size;
+        %tmp.79 = invoke %tmp.77 %tmp.78();
+        %tmp.80 = 1;
+        %tmp.81 = sub %tmp.79 %tmp.80;
+        %tmp.82 = agetv %tmp.75 %tmp.81;
+        %tmp.83 = invoke %tmp.72 %tmp.73(%tmp.82);
+        %tmp.84 = 13;
+        %tmp.85 = eq %tmp.83 %tmp.84;
+        bf %tmp.85 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_45_16_if_false;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_45_16_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_45_52_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 46 20 ]
+        %tmp.87 = getv ? :play;
+        %tmp.88 = getv function %tmp.87 :slice;
+        %tmp.89 = 0;
+        %tmp.90 = -1;
+        %tmp.91 = invoke %tmp.87 %tmp.88(%tmp.89, %tmp.90);
+        putv self :play %tmp.91;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 47 20 ]
+        %tmp.92 = -1;
+        putv self :sel %tmp.92;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_45_52_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_45_16_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_45_16_if_false:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 48 23 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_48_23_if_stmt:
+        %tmp.94 = getv ? :sel;
+        %tmp.95 = 28;
+        %tmp.96 = eq %tmp.94 %tmp.95;
+        bf %tmp.96 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_48_23_if_false;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_48_23_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_48_38_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 49 20 ]
+        %tmp.97 = -1;
+        putv self :sel %tmp.97;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_48_38_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_48_23_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_48_23_if_false:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 50 23 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_50_23_if_stmt:
+        %tmp.99 = getv ? :sel;
+        %tmp.100 = -1;
+        %tmp.101 = eq %tmp.99 %tmp.100;
+        bf %tmp.101 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_50_23_if_false;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_50_23_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_50_38_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 51 20 ]
+        %tmp.102 = 28;
+        putv self :sel %tmp.102;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_50_38_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_50_23_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_50_23_if_false:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_52_23_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 53 20 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_53_20_if_stmt:
+        %tmp.103 = self;
+        %tmp.104 = getv function %tmp.103 :val;
+        %tmp.106 = getv ? :play;
+        %tmp.108 = getv ? :play;
+        %tmp.109 = getv function %tmp.108 :size;
+        %tmp.110 = invoke %tmp.108 %tmp.109();
+        %tmp.111 = 1;
+        %tmp.112 = sub %tmp.110 %tmp.111;
+        %tmp.113 = agetv %tmp.106 %tmp.112;
+        %tmp.114 = invoke %tmp.103 %tmp.104(%tmp.113);
+        %tmp.115 = self;
+        %tmp.116 = getv function %tmp.115 :val;
+        %tmp.118 = getv ? :pyr;
+        %tmp.120 = getv ? :sel;
+        %tmp.121 = agetv %tmp.118 %tmp.120;
+        %tmp.122 = invoke %tmp.115 %tmp.116(%tmp.121);
+        %tmp.123 = add %tmp.114 %tmp.122;
+        %tmp.124 = 13;
+        %tmp.125 = eq %tmp.123 %tmp.124;
+        bf %tmp.125 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_53_20_if_false;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_53_20_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_53_72_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 54 24 ]
+        %tmp.127 = getv ? :play;
+        %tmp.128 = getv function %tmp.127 :slice;
+        %tmp.129 = 0;
+        %tmp.130 = -1;
+        %tmp.131 = invoke %tmp.127 %tmp.128(%tmp.129, %tmp.130);
+        putv self :play %tmp.131;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 55 24 ]
+        %tmp.132 = getv self :pyr;
+        %tmp.133 = null;
+        %tmp.135 = getv ? :sel;
+        aputv %tmp.132 %tmp.135 %tmp.133;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 56 24 ]
+        %tmp.136 = -1;
+        putv self :sel %tmp.136;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 57 24 ]
+        %tmp.137 = self;
+        %tmp.138 = getv function %tmp.137 :checkfree;
+        invoke %tmp.137 %tmp.138();
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_53_72_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_53_20_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_53_20_if_false:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_58_27_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 59 24 ]
+        %tmp.139 = 28;
+        putv self :sel %tmp.139;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_58_27_stop:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_53_20_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_52_23_stop:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_50_23_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_48_23_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_45_16_if_end:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 62 16 ]
+        %tmp.140 = self;
+        %tmp.141 = getv function %tmp.140 :savegame;
+        invoke %tmp.140 %tmp.141();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 63 16 ]
+        %tmp.142 = getm $.Toybox.WatchUi;
+        %tmp.143 = getv function %tmp.142 :requestUpdate;
+        invoke %tmp.142 %tmp.143();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 64 16 ]
+        %tmp.144 = true;
+        ret %tmp.144;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_43_41_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_43_12_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_43_12_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_42_24_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_42_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_42_8_if_end:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 69 8 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_69_8_if_stmt:
+        %tmp.146 = getv ? :state;
+        %tmp.147 = 1;
+        %tmp.148 = eq %tmp.146 %tmp.147;
+        bf %tmp.148 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_69_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_69_8_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_69_24_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 70 12 ]
+        for @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_12_for_test @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_12_for_incr @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_12_for_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_12_for_init:
+        [ "C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_12_for_begin" "C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_12_for_end" ]
+        %i.2 = local;
+        %tmp.149 = 0;
+        lputv %i.2 %tmp.149;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_12_for_test:
+        %tmp.151 = lgetv %i.2;
+        %tmp.153 = getv ? :pyr;
+        %tmp.154 = getv function %tmp.153 :size;
+        %tmp.155 = invoke %tmp.153 %tmp.154();
+        %tmp.156 = lt %tmp.151 %tmp.155;
+        bf %tmp.156 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_12_for_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_12_for_begin:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_43_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 71 16 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_16_if_stmt:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_20_begin:
+        %tmp.157 = self;
+        %tmp.158 = getv function %tmp.157 :inbox;
+        %tmp.160 = getv ? :pyrXY;
+        %tmp.162 = lgetv %i.2;
+        %tmp.163 = agetv %tmp.160 %tmp.162;
+        %tmp.165 = getv ? :cardWH;
+        %tmp.167 = lgetv %xy.1;
+        %tmp.168 = invoke %tmp.157 %tmp.158(%tmp.163, %tmp.165, %tmp.167);
+        %tmp.169 = dup %tmp.168;
+        bf %tmp.169 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_50_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_50_true:
+        %tmp.171 = getv ? :pyr;
+        %tmp.173 = lgetv %i.2;
+        %tmp.174 = agetv %tmp.171 %tmp.173;
+        %tmp.175 = null;
+        %tmp.176 = ne %tmp.174 %tmp.175;
+        %tmp.177 = and %tmp.168 %tmp.176;
+        push %tmp.177;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_50_end:
+        %tmp.178 = phi [%tmp.169 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_20_begin] [%tmp.177 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_50_true] [%tmp.178 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_50_end];
+        bf %tmp.178 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_16_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_16_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_66_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 72 20 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_72_20_if_stmt:
+        %tmp.180 = getv ? :pfree;
+        %tmp.182 = lgetv %i.2;
+        %tmp.183 = agetv %tmp.180 %tmp.182;
+        bf %tmp.183 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_72_20_if_false;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_72_20_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_72_34_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 73 24 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_73_24_if_stmt:
+        %tmp.184 = self;
+        %tmp.185 = getv function %tmp.184 :val;
+        %tmp.187 = getv ? :pyr;
+        %tmp.189 = lgetv %i.2;
+        %tmp.190 = agetv %tmp.187 %tmp.189;
+        %tmp.191 = invoke %tmp.184 %tmp.185(%tmp.190);
+        %tmp.192 = 13;
+        %tmp.193 = eq %tmp.191 %tmp.192;
+        bf %tmp.193 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_73_24_if_false;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_73_24_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_73_47_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 74 28 ]
+        %tmp.194 = getv self :pyr;
+        %tmp.195 = null;
+        %tmp.197 = lgetv %i.2;
+        aputv %tmp.194 %tmp.197 %tmp.195;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 75 28 ]
+        %tmp.198 = self;
+        %tmp.199 = getv function %tmp.198 :checkfree;
+        invoke %tmp.198 %tmp.199();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 76 28 ]
+        %tmp.200 = -1;
+        putv self :sel %tmp.200;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_73_47_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_73_24_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_73_24_if_false:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 77 31 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_77_31_if_stmt:
+        %tmp.202 = getv ? :sel;
+        %tmp.204 = lgetv %i.2;
+        %tmp.205 = eq %tmp.202 %tmp.204;
+        bf %tmp.205 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_77_31_if_false;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_77_31_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_77_45_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 78 28 ]
+        %tmp.206 = -1;
+        putv self :sel %tmp.206;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_77_45_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_77_31_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_77_31_if_false:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 79 31 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_79_31_if_stmt:
+        %tmp.208 = getv ? :sel;
+        %tmp.209 = -1;
+        %tmp.210 = eq %tmp.208 %tmp.209;
+        bf %tmp.210 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_79_31_if_false;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_79_31_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_79_46_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 80 28 ]
+        %tmp.212 = lgetv %i.2;
+        putv self :sel %tmp.212;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_79_46_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_79_31_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_79_31_if_false:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_81_31_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 82 28 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_82_28_if_stmt:
+        %tmp.214 = getv ? :sel;
+        %tmp.215 = 28;
+        %tmp.216 = eq %tmp.214 %tmp.215;
+        bf %tmp.216 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_82_28_if_false;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_82_28_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_82_43_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 83 32 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_83_32_if_stmt:
+        %tmp.217 = self;
+        %tmp.218 = getv function %tmp.217 :val;
+        %tmp.220 = getv ? :play;
+        %tmp.222 = getv ? :play;
+        %tmp.223 = getv function %tmp.222 :size;
+        %tmp.224 = invoke %tmp.222 %tmp.223();
+        %tmp.225 = 1;
+        %tmp.226 = sub %tmp.224 %tmp.225;
+        %tmp.227 = agetv %tmp.220 %tmp.226;
+        %tmp.228 = invoke %tmp.217 %tmp.218(%tmp.227);
+        %tmp.229 = self;
+        %tmp.230 = getv function %tmp.229 :val;
+        %tmp.232 = getv ? :pyr;
+        %tmp.234 = lgetv %i.2;
+        %tmp.235 = agetv %tmp.232 %tmp.234;
+        %tmp.236 = invoke %tmp.229 %tmp.230(%tmp.235);
+        %tmp.237 = add %tmp.228 %tmp.236;
+        %tmp.238 = 13;
+        %tmp.239 = eq %tmp.237 %tmp.238;
+        bf %tmp.239 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_83_32_if_false;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_83_32_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_83_82_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 84 36 ]
+        %tmp.241 = getv ? :play;
+        %tmp.242 = getv function %tmp.241 :slice;
+        %tmp.243 = 0;
+        %tmp.244 = -1;
+        %tmp.245 = invoke %tmp.241 %tmp.242(%tmp.243, %tmp.244);
+        putv self :play %tmp.245;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 85 36 ]
+        %tmp.246 = getv self :pyr;
+        %tmp.247 = null;
+        %tmp.249 = lgetv %i.2;
+        aputv %tmp.246 %tmp.249 %tmp.247;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 86 36 ]
+        %tmp.250 = -1;
+        putv self :sel %tmp.250;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 87 36 ]
+        %tmp.251 = self;
+        %tmp.252 = getv function %tmp.251 :checkfree;
+        invoke %tmp.251 %tmp.252();
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_83_82_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_83_32_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_83_32_if_false:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_88_39_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 89 36 ]
+        %tmp.254 = lgetv %i.2;
+        putv self :sel %tmp.254;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_88_39_stop:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_83_32_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_82_43_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_82_28_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_82_28_if_false:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_91_34_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 92 32 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_92_32_if_stmt:
+        %tmp.255 = self;
+        %tmp.256 = getv function %tmp.255 :val;
+        %tmp.258 = getv ? :pyr;
+        %tmp.260 = getv ? :sel;
+        %tmp.261 = agetv %tmp.258 %tmp.260;
+        %tmp.262 = invoke %tmp.255 %tmp.256(%tmp.261);
+        %tmp.263 = self;
+        %tmp.264 = getv function %tmp.263 :val;
+        %tmp.266 = getv ? :pyr;
+        %tmp.268 = lgetv %i.2;
+        %tmp.269 = agetv %tmp.266 %tmp.268;
+        %tmp.270 = invoke %tmp.263 %tmp.264(%tmp.269);
+        %tmp.271 = add %tmp.262 %tmp.270;
+        %tmp.272 = 13;
+        %tmp.273 = eq %tmp.271 %tmp.272;
+        bf %tmp.273 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_92_32_if_false;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_92_32_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_92_71_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 93 36 ]
+        %tmp.274 = getv self :pyr;
+        %tmp.275 = null;
+        %tmp.277 = getv ? :sel;
+        aputv %tmp.274 %tmp.277 %tmp.275;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 94 36 ]
+        %tmp.278 = getv self :pyr;
+        %tmp.279 = null;
+        %tmp.281 = lgetv %i.2;
+        aputv %tmp.278 %tmp.281 %tmp.279;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 95 36 ]
+        %tmp.282 = -1;
+        putv self :sel %tmp.282;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 96 36 ]
+        %tmp.283 = self;
+        %tmp.284 = getv function %tmp.283 :checkfree;
+        invoke %tmp.283 %tmp.284();
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_92_71_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_92_32_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_92_32_if_false:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_97_39_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 98 36 ]
+        %tmp.286 = lgetv %i.2;
+        putv self :sel %tmp.286;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_97_39_stop:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_92_32_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_91_34_stop:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_82_28_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_81_31_stop:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_79_31_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_77_31_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_73_24_if_end:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 102 24 ]
+        %tmp.287 = self;
+        %tmp.288 = getv function %tmp.287 :savegame;
+        invoke %tmp.287 %tmp.288();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 103 24 ]
+        %tmp.289 = getm $.Toybox.WatchUi;
+        %tmp.290 = getv function %tmp.289 :requestUpdate;
+        invoke %tmp.289 %tmp.290();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 104 24 ]
+        %tmp.291 = true;
+        ret %tmp.291;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_72_34_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_72_20_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_72_20_if_false:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 105 27 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_105_27_if_stmt:
+        %tmp.292 = self;
+        %tmp.293 = getv function %tmp.292 :selfree;
+        %tmp.295 = lgetv %i.2;
+        %tmp.297 = getv ? :sel;
+        %tmp.298 = invoke %tmp.292 %tmp.293(%tmp.295, %tmp.297);
+        bf %tmp.298 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_105_27_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_105_27_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_105_47_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 106 24 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_106_24_if_stmt:
+        %tmp.299 = self;
+        %tmp.300 = getv function %tmp.299 :val;
+        %tmp.302 = getv ? :pyr;
+        %tmp.304 = getv ? :sel;
+        %tmp.305 = agetv %tmp.302 %tmp.304;
+        %tmp.306 = invoke %tmp.299 %tmp.300(%tmp.305);
+        %tmp.307 = self;
+        %tmp.308 = getv function %tmp.307 :val;
+        %tmp.310 = getv ? :pyr;
+        %tmp.312 = lgetv %i.2;
+        %tmp.313 = agetv %tmp.310 %tmp.312;
+        %tmp.314 = invoke %tmp.307 %tmp.308(%tmp.313);
+        %tmp.315 = add %tmp.306 %tmp.314;
+        %tmp.316 = 13;
+        %tmp.317 = eq %tmp.315 %tmp.316;
+        bf %tmp.317 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_106_24_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_106_24_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_106_63_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 107 28 ]
+        %tmp.318 = getv self :pyr;
+        %tmp.319 = null;
+        %tmp.321 = getv ? :sel;
+        aputv %tmp.318 %tmp.321 %tmp.319;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 108 28 ]
+        %tmp.322 = getv self :pyr;
+        %tmp.323 = null;
+        %tmp.325 = lgetv %i.2;
+        aputv %tmp.322 %tmp.325 %tmp.323;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 109 28 ]
+        %tmp.326 = -1;
+        putv self :sel %tmp.326;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 110 28 ]
+        %tmp.327 = self;
+        %tmp.328 = getv function %tmp.327 :checkfree;
+        invoke %tmp.327 %tmp.328();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 111 28 ]
+        %tmp.329 = self;
+        %tmp.330 = getv function %tmp.329 :savegame;
+        invoke %tmp.329 %tmp.330();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 112 28 ]
+        %tmp.331 = getm $.Toybox.WatchUi;
+        %tmp.332 = getv function %tmp.331 :requestUpdate;
+        invoke %tmp.331 %tmp.332();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 113 28 ]
+        %tmp.333 = true;
+        ret %tmp.333;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_106_63_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_106_24_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_106_24_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_105_47_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_105_27_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_105_27_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_72_20_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_66_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_16_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_71_16_if_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_43_stop:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_12_for_incr:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 70 ]
+        %tmp.336 = lgetv %i.2;
+        %tmp.337 = add %tmp.336 1;
+        lputv %i.2 %tmp.337;
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_12_for_test;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_70_12_for_end:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_69_24_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_69_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_69_8_if_end:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 121 8 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_121_8_if_stmt:
+        %tmp.338 = self;
+        %tmp.339 = getv function %tmp.338 :inbox;
+        %tmp.341 = getv ? :newXY;
+        %tmp.343 = getv ? :newWH;
+        %tmp.345 = lgetv %xy.1;
+        %tmp.346 = invoke %tmp.338 %tmp.339(%tmp.341, %tmp.343, %tmp.345);
+        bf %tmp.346 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_121_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_121_8_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_121_35_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 122 12 ]
+        %tmp.347 = self;
+        %tmp.348 = getv function %tmp.347 :newgame;
+        invoke %tmp.347 %tmp.348();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 123 12 ]
+        %tmp.349 = getm $.Toybox.WatchUi;
+        %tmp.350 = getv function %tmp.349 :requestUpdate;
+        invoke %tmp.349 %tmp.350();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 124 12 ]
+        %tmp.351 = true;
+        ret %tmp.351;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_121_35_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_121_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_121_8_if_end:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 127 8 ]
+        %tmp.352 = false;
+        ret %tmp.352;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_16_42_stop:
+    }
+    [ @file = "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc"; @line = 134; ]
+    function inbox(boxxy, boxwh, point) as Boolean {
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_134_49_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 135 8 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_135_8_if_stmt:
+        %tmp.2 = lgetv %point;
+        %tmp.3 = 0;
+        %tmp.4 = agetv %tmp.2 %tmp.3;
+        %tmp.6 = lgetv %boxxy;
+        %tmp.7 = 0;
+        %tmp.8 = agetv %tmp.6 %tmp.7;
+        %tmp.9 = lt %tmp.4 %tmp.8;
+        bf %tmp.9 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_135_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_135_8_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_135_31_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 135 32 ]
+        %tmp.10 = false;
+        ret %tmp.10;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_135_31_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_135_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_135_8_if_end:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 136 8 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_136_8_if_stmt:
+        %tmp.12 = lgetv %point;
+        %tmp.13 = 0;
+        %tmp.14 = agetv %tmp.12 %tmp.13;
+        %tmp.16 = lgetv %boxxy;
+        %tmp.17 = 0;
+        %tmp.18 = agetv %tmp.16 %tmp.17;
+        %tmp.20 = lgetv %boxwh;
+        %tmp.21 = 0;
+        %tmp.22 = agetv %tmp.20 %tmp.21;
+        %tmp.23 = add %tmp.18 %tmp.22;
+        %tmp.24 = gt %tmp.14 %tmp.23;
+        bf %tmp.24 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_136_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_136_8_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_136_40_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 136 41 ]
+        %tmp.25 = false;
+        ret %tmp.25;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_136_40_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_136_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_136_8_if_end:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 137 8 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_137_8_if_stmt:
+        %tmp.27 = lgetv %point;
+        %tmp.28 = 1;
+        %tmp.29 = agetv %tmp.27 %tmp.28;
+        %tmp.31 = lgetv %boxxy;
+        %tmp.32 = 1;
+        %tmp.33 = agetv %tmp.31 %tmp.32;
+        %tmp.34 = lt %tmp.29 %tmp.33;
+        bf %tmp.34 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_137_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_137_8_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_137_31_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 137 32 ]
+        %tmp.35 = false;
+        ret %tmp.35;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_137_31_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_137_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_137_8_if_end:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 138 8 ]
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_138_8_if_stmt:
+        %tmp.37 = lgetv %point;
+        %tmp.38 = 1;
+        %tmp.39 = agetv %tmp.37 %tmp.38;
+        %tmp.41 = lgetv %boxxy;
+        %tmp.42 = 1;
+        %tmp.43 = agetv %tmp.41 %tmp.42;
+        %tmp.45 = lgetv %boxwh;
+        %tmp.46 = 1;
+        %tmp.47 = agetv %tmp.45 %tmp.46;
+        %tmp.48 = add %tmp.43 %tmp.47;
+        %tmp.49 = gt %tmp.39 %tmp.48;
+        bf %tmp.49 @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_138_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_138_8_if_true:
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_138_40_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 138 41 ]
+        %tmp.50 = false;
+        ret %tmp.50;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_138_40_stop:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_138_8_if_end;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_138_8_if_end:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc" 139 8 ]
+        %tmp.51 = true;
+        ret %tmp.51;
+C_Garmin_Projects_Pyramid_source_PyramidDelegate_mc_134_49_stop:
+    }
+}
+[ @file = "C:\Garmin\Projects\Pyramid\source\PyramidDelegate.mc"; @line = 1; ]
+<init> {
+}

@@ -1,0 +1,166 @@
+[ @file = "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc"; @line = 1; ]
+import Toybox.Lang;
+[ @file = "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc"; @line = 2; ]
+import Toybox.System;
+[ @file = "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc"; @line = 3; ]
+import Toybox.WatchUi;
+[ @file = "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc"; @line = 4; ]
+import Toybox.Application.Storage;
+[ @file = "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc"; @line = 6; ]
+class PyramidMenuDelegate extends WatchUi.MenuInputDelegate{
+    [ @file = "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc"; @line = 6; ]
+    <init> {
+    }
+    [ @file = "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc"; @line = 6; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc"; @line = 8; ]
+    function initialize() as Void {
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_8_26_10_4_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 9 8 ]
+        %tmp.2 = getv ? :MenuInputDelegate;
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_8_26_10_4_stop:
+    }
+    [ @file = "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc"; @line = 12; ]
+    public
+    function onSelect(item as MenuItem) {
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_12_47_33_4_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 13 8 ]
+        %tmp.1 = lgetv %item;
+        %tmp.2 = getv function %tmp.1 :getId;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        push %tmp.3;
+        switch %tmp.3 @C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_13_8_32_8_switchStmtEnd;
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_13_8_32_8_switchStmtBegin:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 14 12 ]
+        %tmp.4 = dup %tmp.3;
+        %tmp.5 = "theme";
+        %tmp.6 = getv function %tmp.4 :equals;
+        %tmp.7 = invoke %tmp.4 %tmp.6 (%tmp.5);
+        bt %tmp.7 @C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_14_12_18_21_switchCase;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 19 12 ]
+        %tmp.8 = dup %tmp.3;
+        %tmp.9 = "retries";
+        %tmp.10 = getv function %tmp.8 :equals;
+        %tmp.11 = invoke %tmp.8 %tmp.10 (%tmp.9);
+        bt %tmp.11 @C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_19_12_23_21_switchCase;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 24 12 ]
+        %tmp.12 = dup %tmp.3;
+        %tmp.13 = "deckpos";
+        %tmp.14 = getv function %tmp.12 :equals;
+        %tmp.15 = invoke %tmp.12 %tmp.14 (%tmp.13);
+        bt %tmp.15 @C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_24_12_28_21_switchCase;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 29 12 ]
+        %tmp.16 = dup %tmp.3;
+        %tmp.17 = "stats";
+        %tmp.18 = getv function %tmp.16 :equals;
+        %tmp.19 = invoke %tmp.16 %tmp.18 (%tmp.17);
+        bt %tmp.19 @C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_29_12_31_21_switchCase;
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_13_8_32_8_switchStmtDefault:
+        goto @C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_13_8_32_8_defaultCodeBegin;
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_14_12_18_21_switchCase:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 15 16 ]
+        %tmp.21 = getv ? :theme;
+        %tmp.22 = 1;
+        %tmp.23 = add %tmp.21 %tmp.22;
+        %tmp.25 = getv ? :themes;
+        %tmp.26 = getv function %tmp.25 :size;
+        %tmp.27 = invoke %tmp.25 %tmp.26();
+        %tmp.28 = mod %tmp.23 %tmp.27;
+        putv self :theme %tmp.28;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 16 16 ]
+        %tmp.29 = getm $.Toybox.Application.Storage;
+        %tmp.30 = getv function %tmp.29 :setValue;
+        %tmp.31 = "theme";
+        %tmp.33 = getv ? :theme;
+        invoke %tmp.29 %tmp.30(%tmp.31, %tmp.33);
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 17 16 ]
+        %tmp.34 = lgetv %item;
+        %tmp.35 = getv function %tmp.34 :setSubLabel;
+        %tmp.37 = getv ? :themes;
+        %tmp.39 = getv ? :theme;
+        %tmp.40 = agetv %tmp.37 %tmp.39;
+        invoke %tmp.34 %tmp.35(%tmp.40);
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 18 16 ]
+        goto @C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_13_8_32_8_switchStmtEnd;
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_19_12_23_21_switchCase:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 20 16 ]
+        %tmp.42 = getv ? :retries;
+        %tmp.43 = 1;
+        %tmp.44 = add %tmp.42 %tmp.43;
+        %tmp.46 = getv ? :retriess;
+        %tmp.47 = getv function %tmp.46 :size;
+        %tmp.48 = invoke %tmp.46 %tmp.47();
+        %tmp.49 = mod %tmp.44 %tmp.48;
+        putv self :retries %tmp.49;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 21 16 ]
+        %tmp.50 = getm $.Toybox.Application.Storage;
+        %tmp.51 = getv function %tmp.50 :setValue;
+        %tmp.52 = "retries";
+        %tmp.54 = getv ? :retries;
+        invoke %tmp.50 %tmp.51(%tmp.52, %tmp.54);
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 22 16 ]
+        %tmp.55 = lgetv %item;
+        %tmp.56 = getv function %tmp.55 :setSubLabel;
+        %tmp.58 = getv ? :retriess;
+        %tmp.60 = getv ? :retries;
+        %tmp.61 = agetv %tmp.58 %tmp.60;
+        invoke %tmp.55 %tmp.56(%tmp.61);
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 23 16 ]
+        goto @C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_13_8_32_8_switchStmtEnd;
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_24_12_28_21_switchCase:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 25 16 ]
+        %tmp.63 = getv ? :deckpos;
+        %tmp.64 = 1;
+        %tmp.65 = add %tmp.63 %tmp.64;
+        %tmp.67 = getv ? :deckposs;
+        %tmp.68 = getv function %tmp.67 :size;
+        %tmp.69 = invoke %tmp.67 %tmp.68();
+        %tmp.70 = mod %tmp.65 %tmp.69;
+        putv self :deckpos %tmp.70;
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 26 16 ]
+        %tmp.71 = getm $.Toybox.Application.Storage;
+        %tmp.72 = getv function %tmp.71 :setValue;
+        %tmp.73 = "deckpos";
+        %tmp.75 = getv ? :deckpos;
+        invoke %tmp.71 %tmp.72(%tmp.73, %tmp.75);
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 27 16 ]
+        %tmp.76 = lgetv %item;
+        %tmp.77 = getv function %tmp.76 :setSubLabel;
+        %tmp.79 = getv ? :deckposs;
+        %tmp.81 = getv ? :deckpos;
+        %tmp.82 = agetv %tmp.79 %tmp.81;
+        invoke %tmp.76 %tmp.77(%tmp.82);
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 28 16 ]
+        goto @C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_13_8_32_8_switchStmtEnd;
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_29_12_31_21_switchCase:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 30 16 ]
+        %tmp.83 = self;
+        %tmp.84 = getv function %tmp.83 :showstats;
+        invoke %tmp.83 %tmp.84();
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 31 16 ]
+        goto @C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_13_8_32_8_switchStmtEnd;
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_13_8_32_8_defaultCodeBegin:
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_13_8_32_8_switchStmtEnd:
+        pop;
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_12_47_33_4_stop:
+    }
+    [ @file = "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc"; @line = 35; ]
+    public
+    function onBack() {
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_35_29_37_4_start:
+[ "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc" 36 8 ]
+        %tmp.1 = getm $.Toybox.WatchUi;
+        %tmp.2 = getv function %tmp.1 :popView;
+        %tmp.3 = getm $.Toybox.WatchUi;
+        %tmp.4 = getv %tmp.3 :SLIDE_DOWN;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+C_Garmin_Projects_Pyramid_source_PyramidMenuDelegate_mc_35_29_37_4_stop:
+    }
+}
+[ @file = "C:\Garmin\Projects\Pyramid\source\PyramidMenuDelegate.mc"; @line = 1; ]
+<init> {
+}
